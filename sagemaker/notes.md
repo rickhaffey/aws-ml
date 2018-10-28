@@ -32,9 +32,20 @@ Intent:  Improve the process of ML modeling, by providing Build, Train, and Depl
 * https://docs.aws.amazon.com/sagemaker/
 
 #### How It Works
-
-* [ ] NOTES
  
 #### Getting Started 
 
+Walkthrough Steps
 
+* create an S3 bucket to store model training data and model artifacts
+    * include `sagemaker` in the name of the bucket
+* create a notebook instance
+    * Services -> SageMaker -> Notebook Instances -> Create notebook instance.
+    * Set the following properties:
+        * Notebook instance name: ""
+        * Instance Type: ml.t2.medium
+    * Create an associated IAM role:
+        * IAM role -> Create a new role
+        * S3 buckets you specify: "None"
+        * Create role
+    * Create notebook instance
