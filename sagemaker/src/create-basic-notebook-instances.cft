@@ -19,16 +19,26 @@ Resources:
             Action:
               - "sts:AssumeRole"
       Path: "/"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess"
       Policies:
         -
-          PolicyName: "root"
+          PolicyName: "SageMakerNotebookS3Access"
           PolicyDocument:
-            Version: "2012-10-17"
+            Version: '2012-10-17'
             Statement:
-              -
-                Effect: "Allow"
-                Action: "*"
-                Resource: "*"
+            - Action:
+              - s3:ListBucket
+              Effect: Allow
+              Resource:
+              - arn:aws:s3:::SageMaker
+            - Action:
+              - s3:GetObject
+              - s3:PutObject
+              - s3:DeleteObject
+              Effect: Allow
+              Resource:
+              - arn:aws:s3:::SageMaker/*
 Outputs:
   BasicNotebookInstanceId:
     Value: !Ref BasicNotebookInstance
