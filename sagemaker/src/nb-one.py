@@ -69,4 +69,18 @@ kmeans = KMeans(role=role, train_instance_count=2,
 %%time
 kmeans.fit(kmeans.record_set(train_set[0]))
 
-Amazon Web Services. Amazon SageMaker: Developer Guide (Kindle Locations 786-787). Amazon Web Services. Kindle Edition. 
+3.4.1
+
+
+3 Steps
+
+
+
+High level - takes care of all these via the `deploy` method
+Low level - provides corresponding methods
+
+
+
+
+
+
