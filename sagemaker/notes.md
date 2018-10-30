@@ -1,4 +1,3 @@
-
 ## SageMaker Notes
 
 ### Overview
@@ -16,11 +15,11 @@ Intent:  Improve the process of ML modeling, by providing Build, Train, and Depl
   * pre-configured to run TensorFlow, Apache MXNet, and Chainer
      * allow local mode script testing via Python SDK
   * allow using custom ML framework
-  
+
 * Train
   * simplify training proces by managing infrastructure and scaling
   * automatic model tuning
-  
+
 * Deploy
   * real-time or batch prediction support
   * auto-scaling
@@ -32,8 +31,8 @@ Intent:  Improve the process of ML modeling, by providing Build, Train, and Depl
 * https://docs.aws.amazon.com/sagemaker/
 
 #### How It Works
- 
-#### Getting Started 
+
+#### Getting Started
 
 Walkthrough Steps
 

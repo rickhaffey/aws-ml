@@ -1,0 +1,36 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Resources: 
+  SageMakerNotebookRole: 
+    Type: "AWS::IAM::Role"
+    Properties: 
+      AssumeRolePolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: sagemaker.amazonaws.com
+          Action: sts:AssumeRole
+      Path: "/service-role/"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess"
+      Policies: 
+        - 
+          PolicyName: "SageMakerS3Access"
+          PolicyDocument: 
+            Version: '2012-10-17'
+            Statement:
+            - Action:
+              - s3:ListBucket
+              Effect: Allow
+              Resource:
+              - arn:aws:s3:::SageMaker
+            - Action:
+              - s3:GetObject
+              - s3:PutObject
+              - s3:DeleteObject
+              Effect: Allow
+              Resource:
+              - arn:aws:s3:::SageMaker/*
+
+
