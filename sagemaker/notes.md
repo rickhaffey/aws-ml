@@ -90,7 +90,19 @@ Installing External Libraries and Kernels in Notebook Instances
 
 * Provides ability to install custom environments, packages, and kernels
 * e.g. R, Scala
-* Scala : note that instructions don't work -- they don't match the structure of the downloaded scalal kernel repo
+* Scala : note that instructions in docs don't work, see the following for updated instructions:
 
+```
+git clone https://github.com/jupyter-scala/jupyter-scala.git
+
+cd jupyter-scala
+
+./scripts/coursier.sh bootstrap \
+    -i user -I user:sh.almond:scala-kernel-api_$SCALA_VERSION:$ALMOND_VERSION \
+    sh.almond:scala-kernel_$SCALA_VERSION:$ALMOND_VERSION \
+    -o almond
+    
+./almond --install
+```
 
 Resume @ "Using Built-in Algorithms with Amazon SageMaker"
