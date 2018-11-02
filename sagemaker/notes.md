@@ -48,3 +48,49 @@ Walkthrough Steps
         * S3 buckets you specify: "None"
         * Create role
     * Create notebook instance
+
+#### Using Notebook Instances
+
+Steps taken by SageMaker when a noteook instance create request is received:
+
+* Creates a network interface
+* Launches an ML compute instance
+* Installs Anaconda packages and libraries for common deep learning platforms
+  * Anaconda installer
+  * TensorFlow
+  * Apache MXNet
+* Attaches an ML storage volume
+  * 5 GB ML storage volume (persistent)
+  * 20 GB instance storage (ephemeral)
+* Copies example Jupyter notebooks
+
+Access to notebooks can be limited to specific IP addresses
+
+Notebook can be accessed via:
+
+* Console -> Open action
+* API -> CreatePresignedNotebookInstanceURL
+
+Using Example Notebooks
+
+* they use the `nbexamples` Jupyter extensions
+* https://github.com/danielballan/nbexamples
+
+
+Set Notebook Kernel
+
+* Options
+  * Python 2
+  * Python 3
+  * MXNet
+  * TensorFlow
+  * PySpark
+  
+Installing External Libraries and Kernels in Notebook Instances
+
+* Provides ability to install custom environments, packages, and kernels
+* e.g. R, Scala
+* Scala : note that instructions don't work -- they don't match the structure of the downloaded scalal kernel repo
+
+
+Resume @ "Using Built-in Algorithms with Amazon SageMaker"
