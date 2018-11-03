@@ -105,4 +105,44 @@ cd jupyter-scala
 ./almond --install
 ```
 
-Resume @ "Using Built-in Algorithms with Amazon SageMaker"
+#### Using Built-in Algorithms with Amazon SageMaker
+
+* several algorithms provided built-in to SageMaker
+* supervised examples:
+  * for classification:
+    * Linear Learner: `predictor_type = binary_classifier`
+    * XGBoost: `objective = reg:logistic`
+  * for regression:
+    * Linear Learner: `predictor_type = regressor`
+    * XGBoost: `objective = reg:linear`
+  * discrete recommendations:
+    * Factorization Machine
+* unsupervised examples:
+  * K-Means
+  * PCA
+* specific use case examples:
+  * Image Classification Algorithm
+  * Sequence to Sequence
+  * Latent Dirichlet Allocation (LDA)
+  * Neural Topic Model (NTM)
+  
+* For each algorithm, there is a Docker Registry path to the image for that algorithm.
+
+#### Common Data Formats
+
+* Many accept CSV for training; in that case, specify `text/csv` for `ContentType`
+  * don't include header
+  * target variable must be in first column
+  * For unsupervised learning: `label_size=0`
+* optimized protobuf recordIO format allows using "Pipe mode" to train
+  * streaming data during training
+  * rather than loading all at once as in "File mode"
+  * allows reducing the size of the EBS volume needed
+  * Pipe mode: only need enough EBS space to store final model artifacts
+  * File mode: needs enough EBS space to store produced artifacts _and_ training data
+
+#### Trained Model Deserialization
+
+* stored as `model.tar.gz` in output S3 bucket
+* within that file is a `model_algo-1` containing the serialized model object
+* [ ] try reloading an XGBoost serialized model outside of the notebook
