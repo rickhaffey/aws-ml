@@ -146,3 +146,37 @@ cd jupyter-scala
 * stored as `model.tar.gz` in output S3 bucket
 * within that file is a `model_algo-1` containing the serialized model object
 * [ ] try reloading an XGBoost serialized model outside of the notebook
+
+
+#### Suggested Instance Types
+
+#### Logs
+
+* contents typically include
+  * Confirmation of arguments provided at the beginning of the log
+  * Errors that occurred during training 
+  * Measurement of an algorithms accuracy or numerical performance
+  * Timings for the algorithm, and any major stages within the algorithm
+
+### Algorithms
+
+#### XGBoost
+
+* open source
+* supports regression, classification (binary and multiclass), and ranking problems
+
+* input data:
+  * tabular
+  * row per observation
+  * first column for label
+  * remaining columns for features
+  * supported formats (for both training and inference):
+    * libsvm: `text/libsvm` (default)
+    * CSV: `text/csv`
+  * for CSV, total memory (# instances * memory / instance) must be able to hold the entire training dataset
+
+* model is serialized / deserialized using the pickle module
+
+* [ ] investigate weighting of observations
+
+* recommed general purpose (M4) instances rather than compute-optimized (C4)
